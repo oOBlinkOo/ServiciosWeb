@@ -33,17 +33,16 @@ public class ListaFragmentos extends ListFragment {
 	@Override
 	public void  onActivityCreated(Bundle savesInstanceState){		 
 		super.onActivityCreated(savesInstanceState);
-//		 String[] values = new String[] { "Android", "iPhone", "WindowsMobile",
-//			        "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
-//			        "Linux", "OS/2" };
+		 String[] values = new String[] { "Android", "iPhone", "WindowsMobile",
+			        "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
+			        "Linux", "OS/2" };
 
 //		ArrayList<String> aux = callService();
 
 callService();
 		titleNews2=titleNews2;
 		// ArrayAdapter<String> adapter2 = new ArrayAdapter<String>();
-		 ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1, titleNews2);
-		 setListAdapter(adapter);
+
 	}
 
 
@@ -73,7 +72,8 @@ callService();
 //					titleNews2=titleNews;
 					titleNews2=titleNews;
 
-
+					ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1, titleNews);
+					setListAdapter(adapter);
 //					ListAdapter newsAdapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.text_view, titleNews);
 //					ListView newsListView = (ListView)findViewById(R.id.newsListView);
 //					newsListView.setAdapter(newsAdapter);
