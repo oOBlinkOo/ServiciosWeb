@@ -22,6 +22,12 @@
             android:name=".DetailledNew"
             android:label="@string/title_activity_detailled_new" >
         </activity>
+
+
+        <activity
+            android:name=".ListaObjetos"
+            android:label="ListaObjetosLabel" >
+        </activity>
     </application>
 
 </manifest>
