@@ -27,40 +27,31 @@ public class ListaFragmentos extends ListFragment {
 	ArrayList<String> titleNews2;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-	     super.onCreate(savedInstanceState);
-	       
-	    }
+		super.onCreate(savedInstanceState);
+
+	}
 	@Override
-	public void  onActivityCreated(Bundle savesInstanceState){		 
+	public void  onActivityCreated(Bundle savesInstanceState){
 		super.onActivityCreated(savesInstanceState);
-		 String[] values = new String[] { "Android", "iPhone", "WindowsMobile",
-			        "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
-			        "Linux", "OS/2" };
-
-//		ArrayList<String> aux = callService();
-
-callService();
-		titleNews2=titleNews2;
-		// ArrayAdapter<String> adapter2 = new ArrayAdapter<String>();
+		callService();
 
 	}
 
 
 
 	public void callService(){
-//		ArrayList<String> aux;
 
 		AsyncHttpClient client = new AsyncHttpClient();
 		client.get("http://rancherita.com.mx/apiv2/fgt9bbcd8dgb99/news", new AsyncHttpResponseHandler() {
 
 			//aqui va todo el codigo, es lo que pasa si hubo succes en el servicio web
 			@Override
-			public void onSuccess(int statusCode, Header[] headers, byte[] response) {
-
+			public void onSuccess(int statusCode, Header[] headers, byte[] response) {;
 				try
 				{
 					Log.i("Entro al ingresar", "esta falladno");
 					String obj  = new String(response); //el response es el json
+					Log.i("faasffsf",obj);
 					news = new JSONArray(obj);
 					ArrayList<String> titleNews = new ArrayList<String>();
 					for(int i = 0; i < news.length(); i++)
@@ -69,14 +60,10 @@ callService();
 						titleNews.add(individualNew.getString("title"));
 					}
 					Log.i("Entro al ingresar", "esta falladno");
-//					titleNews2=titleNews;
-					titleNews2=titleNews;
+
 
 					ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1, titleNews);
 					setListAdapter(adapter);
-//					ListAdapter newsAdapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.text_view, titleNews);
-//					ListView newsListView = (ListView)findViewById(R.id.newsListView);
-//					newsListView.setAdapter(newsAdapter);
 
 
 
@@ -86,6 +73,7 @@ callService();
 					Log.i("Entro al ingresar", "esta falladno");
 //					Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_LONG). show();
 				}
+
 
 			}
 
@@ -98,6 +86,9 @@ callService();
 
 
 		});
+
+
+
 
 	}
 
@@ -159,17 +150,17 @@ callService();
 
 
 	@Override
-	  public void onListItemClick(ListView l, View v, int position, long id) {
-	    String item = (String) getListAdapter().getItem(position);
-	    FragmentoDetalle fragment = (FragmentoDetalle) getFragmentManager().findFragmentById(R.id.detailFragment);
-	    if (fragment != null && fragment.isInLayout()) {
-	      fragment.setText(item);
-	    } else {
-	      Intent intent = new Intent(getActivity().getApplicationContext(),FragmentoDetalle.class);
-	      intent.putExtra("value", item);
-	      intent.putExtra("position",position);
-	      startActivity(intent);
-	    }	
+	public void onListItemClick(ListView l, View v, int position, long id) {
+		String item = (String) getListAdapter().getItem(position);
+		FragmentoDetalle fragment = (FragmentoDetalle) getFragmentManager().findFragmentById(R.id.detailFragment);
+		if (fragment != null && fragment.isInLayout()) {
+			fragment.setText(item);
+		} else {
+			Intent intent = new Intent(getActivity().getApplicationContext(),FragmentoDetalle.class);
+			intent.putExtra("value", item);
+			intent.putExtra("position",position);
+			startActivity(intent);
+		}
 	}
-	
+
 }

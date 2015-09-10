@@ -4,6 +4,8 @@ import android.app.Fragment;
 import android.graphics.drawable.Icon;
 import android.media.Image;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.Spanned;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,7 +39,7 @@ public class FragmentoDetalle extends Fragment {
 	}
 	
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance){
-		View view = inflater.inflate(R.layout.detalle,container,false);
+		View view = inflater.inflate(R.layout.detalle2,container,false);
 		return view;
 	}
 	public void setText(String item){
@@ -66,24 +68,24 @@ callService2(item);
 						if (individualNew.getString("title").equals(item)){
 
 
-							TextView view= (TextView)getView().findViewById(R.id.detailsText);
-							TextView view2= (TextView)getView().findViewById(R.id.detailsText2);
-							TextView view3= (TextView)getView().findViewById(R.id.detailsText3);
-							ImageView view4 = (ImageView)getView().findViewById(R.id.imageView2);
+							TextView view= (TextView)getView().findViewById(R.id.titulo);
+							TextView view2= (TextView)getView().findViewById(R.id.fecha);
+							TextView view3= (TextView)getView().findViewById(R.id.hora);
+							TextView view4= (TextView)getView().findViewById(R.id.descripcion);
+
+//							ImageView view4 = (ImageView)getView().findViewById(R.id.imageView2);
 							view.setText(individualNew.getString("title"));
 							view2.setText(individualNew.getString("fecha"));
 							view3.setText(individualNew.getString("hora"));
-							String var = individualNew.getString("foto_src");
-							try {
-								URL url = new URL(var);
-//								Image image = Image.read(url);
-							}catch (Exception e){
-								Log.e("falla", "onSuccess ");
-							}
 
-//							view4.setImageIcon(icon);
+							String str = individualNew.getString("content");
+							Spanned sp = Html.fromHtml(str);
+//							view4.setText(individualNew.getString("content"));
+							view4.setText(sp);
+
+
 						}
-//						titleNews.add(individualNew.getString("title"));
+
 					}
 
 

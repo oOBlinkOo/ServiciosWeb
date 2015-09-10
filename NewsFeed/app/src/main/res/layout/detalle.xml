@@ -1,35 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:scrollbars = "vertical"
     android:weightSum="1">
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="no u scuk" />
-
-<TextView
-android:id="@+id/detailsText"
-android:layout_width="wrap_content"
-android:layout_height="135dp"
-android:layout_gravity="center_horizontal|center_vertical"
-android:layout_marginTop="20dip"
-android:text="Large Text"
-android:textAppearance="?android:attr/textAppearanceLarge"
-android:textSize="30dip" />
-
-    <TextView
-        android:id="@+id/detailsText2"
-        android:layout_width="wrap_content"
-        android:layout_height="135dp"
-        android:layout_gravity="center_horizontal|center_vertical"
-        android:layout_marginTop="20dip"
-        android:text="Large Text"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="30dip" />
 
     <TextView
         android:id="@+id/detailsText3"
@@ -41,12 +16,46 @@ android:textSize="30dip" />
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="30dip" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="0dp"
-        android:layout_height="fill_parent"
-        android:layout_weight="1.00"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/descripcion"
+        android:layout_gravity="center_horizontal" />
 
-        />
+    <TextView
+        android:id="@+id/detailsText"
+        android:layout_width="wrap_content"
+        android:layout_height="135dp"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:layout_marginTop="20dip"
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="30dip" />
+
+    <TextView
+        android:id="@+id/detailsText2"
+        android:layout_width="wrap_content"
+        android:layout_height="135dp"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:layout_marginTop="20dip"
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="30dip" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="325dp"
+        android:id="@+id/scrollView">
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="no u scuk" />
+    </ScrollView>
+
+
     <!--android:src="@drawable/ic_launcher"-->
 </LinearLayout>
