@@ -62,7 +62,7 @@ public class ListaFragmentos extends ListFragment {
 					Log.i("Entro al ingresar", "esta falladno");
 
 
-					ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1, titleNews);
+					ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),R.layout.text_view, titleNews);
 					setListAdapter(adapter);
 
 

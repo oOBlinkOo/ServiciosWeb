@@ -1,8 +1,10 @@
 package com.newsfeed;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.graphics.drawable.Icon;
 import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.Spanned;
@@ -11,11 +13,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.squareup.picasso.Picasso;
 
 import org.apache.http.Header;
 import org.json.JSONArray;
@@ -70,18 +75,31 @@ callService2(item);
 
 							TextView view= (TextView)getView().findViewById(R.id.titulo);
 							TextView view2= (TextView)getView().findViewById(R.id.fecha);
-							TextView view3= (TextView)getView().findViewById(R.id.hora);
+							//TextView view3= (TextView)getView().findViewById(R.id.hora);
 							TextView view4= (TextView)getView().findViewById(R.id.descripcion);
 
-//							ImageView view4 = (ImageView)getView().findViewById(R.id.imageView2);
+							ImageView imageView = (ImageView)getView().findViewById(R.id.imageView);
 							view.setText(individualNew.getString("title"));
-							view2.setText(individualNew.getString("fecha"));
-							view3.setText(individualNew.getString("hora"));
+							view2.setText("Publicado el " + individualNew.getString("fecha") + individualNew.getString("hora"));
+							//view3.setText(individualNew.getString("hora"));
 
 							String str = individualNew.getString("content");
 							Spanned sp = Html.fromHtml(str);
 //							view4.setText(individualNew.getString("content"));
 							view4.setText(sp);
+							String imgUrl = individualNew.getString("foto_src");
+							Picasso.with(getActivity().getApplicationContext()).load(imgUrl).into(imageView);
+
+							final String link = individualNew.getString("permalink");
+
+							final Button button = (Button) getView().findViewById(R.id.webButton);
+							button.setOnClickListener(new View.OnClickListener() {
+								public void onClick(View v) {
+									Uri uri = Uri.parse(link);
+									Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+									startActivity(intent);
+								}
+							});
 
 
 						}
@@ -94,7 +112,7 @@ callService2(item);
 
 				} catch (JSONException e) {
 					Log.i("Entro al ingresar", "esta falladno");
-//					Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_LONG). show();
+					Toast.makeText(getActivity().getApplicationContext(), "error", Toast.LENGTH_LONG). show();
 				}
 
 			}
