@@ -54,6 +54,8 @@ callService2(item);
 	}
 
 
+
+
 	public void callService2(final String item){
 //		ArrayList<String> aux;
 
@@ -93,6 +95,7 @@ callService2(item);
 							final String link = individualNew.getString("permalink");
 
 							final Button button = (Button) getView().findViewById(R.id.webButton);
+							button.setText("Ir a noticia");
 							button.setOnClickListener(new View.OnClickListener() {
 								public void onClick(View v) {
 									Uri uri = Uri.parse(link);
